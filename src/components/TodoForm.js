@@ -3,7 +3,7 @@ import uuid from "uuid";
 
 function TodoForm({ addTodo }) {
   const [todo, setTodo] = useState({
-    id: "",
+    id: 0,
     task: "",
     completed: false
   });
@@ -16,7 +16,10 @@ function TodoForm({ addTodo }) {
 
   function handleSubmit(e) {
     e.preventDefault(); // prevents browser refresh
-    addTodo({ ...todo, id: uuid.v4() });
+    if (todo.task.trim()) {
+      addTodo({ ...todo, id: uuid.v4() });
+      setTodo({ ...todo, task: "" });
+    }
   }
 
   return (
