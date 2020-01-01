@@ -1,4 +1,7 @@
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
+import "typeface-roboto";
 import "./App.css";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
@@ -30,15 +33,16 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Todo app</p>
-        <TodoForm addTodo={addTodo} />
-        <TodoList
-          todos={todos}
-          removeTodo={removeTodo}
-          toggleComplete={toggleComplete}
-        />
-      </header>
+      <CssBaseline />
+      <Typography style={{ padding: 16 }} variant="h1">
+        React Todo
+      </Typography>
+      <TodoForm addTodo={addTodo} />
+      <TodoList
+        todos={todos}
+        removeTodo={removeTodo}
+        toggleComplete={toggleComplete}
+      />
     </div>
   );
 }

@@ -1,22 +1,18 @@
+import { List } from "@material-ui/core";
 import React from "react";
+import Todo from "./Todo";
 
 function TodoList({ todos, removeTodo, toggleComplete }) {
   return (
-    <ul>
+    <List>
       {todos.map(todo => (
-        <div key={todo.id} style={{ display: "flex" }}>
-          <li
-            style={{
-              textDecoration: todo.completed ? "line-through" : null
-            }}
-            onClick={() => toggleComplete(todo.id)}
-          >
-            {todo.task}
-          </li>
-          <button onClick={() => removeTodo(todo.id)}>X</button>
-        </div>
+        <Todo
+          todo={todo}
+          removeTodo={removeTodo}
+          toggleComplete={toggleComplete}
+        />
       ))}
-    </ul>
+    </List>
   );
 }
 
