@@ -1,7 +1,5 @@
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect, useState } from "react";
-import "typeface-roboto";
 import "./App.css";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
@@ -12,6 +10,7 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
+    // fires when app component mounts to the DOM
     const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storageTodos) {
       setTodos(storageTodos);
@@ -19,10 +18,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // fires when todos array gets updated
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
   function addTodo(todo) {
+    // adds new todo to beginning of todos array
     setTodos([todo, ...todos]);
   }
 
@@ -46,7 +47,6 @@ function App() {
 
   return (
     <div className="App">
-      <CssBaseline />
       <Typography style={{ padding: 16 }} variant="h1">
         React Todo
       </Typography>
